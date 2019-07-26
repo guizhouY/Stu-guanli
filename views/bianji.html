@@ -1,0 +1,51 @@
+{{include './header.html'}}
+<style>
+        .container{
+            padding-top: 20px;
+            width: 270px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+    </style>
+
+        
+
+<div class="container">
+
+
+<form action="/bianji" method="POST">
+
+
+
+<label for="username">姓名：</label>
+<input type="text" name="username" value="{{}}" disabled>
+
+<br>
+<label for="age">年龄：</label>
+<input type="text" name="age" value="23">
+<br>
+<label for="">性别：</label>
+<input type="radio" name='gender' value="保密" checked>保密
+<input type="radio" name='gender' value="男">男
+<input type="radio" name='gender' value="女">女
+<br>
+<label for="major">专业：</label>
+<select name="major" id="major">
+    <option value="HTML">HTML</option>
+    <option selected value="PHP">PHP</option>
+    <option value="Jaca">Java</option>
+    <option value="asp.nat">ASP.net</option>
+</select>
+<br>
+<label for="">爱好：</label>
+<input type="checkbox" name="hobby" value="游戏" checked>游戏
+<input type="checkbox" name="hobby" value="运动">运动
+<input type="checkbox" name="hobby" value="音乐">音乐
+<br>
+<button type="submit">提交</button>
+
+</form>
+
+
+</div>
+{{include './footer.html'}}

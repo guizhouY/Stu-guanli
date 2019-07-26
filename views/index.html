@@ -1,0 +1,107 @@
+{{include './header.html'}}
+<style>
+table,tr,td,th{
+    border: 1px solid #999;
+    border-collapse: collapse;
+    text-align: center;
+}
+table{
+    margin: 0 auto;
+}
+td,th{
+    padding: 10px 35px;
+}
+.container{
+   
+    width: 1000px;
+    margin: 0 auto;
+}
+.a{
+    border: none;
+    text-decoration: underline;
+    color: blue;
+    background-color: white;
+    cursor: pointer;
+}
+</style>
+<div class="container">
+<form action="search" method="GET" style="text-align: center; margin-bottom: 20px">
+    <label for="">姓名：</label>
+    <input type="text" name="xingming">
+   <label for="xingbie">性别</label>
+   <select name="xingbie" id="xingbie">
+        <option value="保密" selected>保密</option>
+        <option value="女">女</option>
+       <option value="男">男</option>
+   </select>
+   <button type="submit">查询</button>
+   <a href="/add">添加</a>
+   <!-- <a onclick="location.href='stulist.html'">添加</a> -->
+</form>
+
+    </form>
+    <table>
+      <tr>
+          <th>序号</th>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>年龄</th>
+          <th>专业</th>
+          <th>爱好</th>
+          <th>删除</th>
+          <th>编辑</th>
+      </tr> 
+{{each msgs f i}}
+<tr>
+<td>{{i+1}} </td>
+<td>{{f.username}} </td>
+<td>{{f.gender}} </td>
+<td>{{f.age}} </td>
+<td>{{f.major}} </td>
+<td>{{f.hobby.toString()}} </td>
+<td><form action="delete" method="POST">
+        <input type="text" name="_id" value="{{f._id}}" hidden>
+      
+   <button type="submit" class="delete a">删除</button>
+</form> </td>
+<td><form action="/write" method="POST" class="write">
+        <input type="text" name="write" value="{{f._id}}" hidden >
+   <button type="submit" class="a">编辑 </button>
+</form> </td>
+</tr>
+{{/each}}
+
+{{each date f i}}
+<tr>
+<td>{{i+1}} </td>
+<td>{{f.username}} </td>
+<td>{{f.gender}} </td>
+<td>{{f.age}} </td>
+<td>{{f.major}} </td>
+<td>{{f.hobby.toString()}} </td>
+<td><form action="delete" method="POST">
+        <input type="text" name="_id" value="{{f._id}}" hidden>
+      
+   <button type="submit" class="delete a">删除</button>
+</form> </td>
+<td><form action="write" method="POST" class="write">
+        <input type="text" name="write" value="{{f._id}}" hidden>
+   <button type="submit" class="a">编辑 </button>
+</form> </td>
+</tr>
+{{/each}}
+    </table>
+</div>
+<script src="/jquery-3.4.1.js"></script>
+<script>
+    var $Delete=$('.delete')
+    $Delete.click(function(ev){
+        if(confirm('确定要删除吗？')){
+}
+else{
+ev.preventDefault()
+    }
+})
+</script>
+
+{{include './footer.html'}}
